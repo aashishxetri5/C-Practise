@@ -105,6 +105,7 @@ showOptions:
         printf("\n\nWould you like to continue?(1/0)...\n"); // 1 = Yes and 0 = true
         scanf("%d", &continuity);
 
+        /* Checks if user wants to continue using the program or not */
         if (continuity == 1){
             system("cls");
             goto showOptions;
