@@ -47,7 +47,6 @@ showOptions:
         break;
 
     case 4:
-
         printf("Enter first how many fibonacci numbers you would like to see... ");
         scanf("%d", &numOfSeries);
         fibonacciSeries(numOfSeries);
