@@ -20,7 +20,7 @@ void startGame();
 * lengthOfWord = length of word selected ranfomly. to be used to check if char guessed by player is correct or not.
 * correctGuesses = It notes number of correct guesses made by player.
 * indexing = for 'for loop'.
-* correctBefore = to check if the word entered is correct was already entered before by the player. 
+* correctBefore = to check if the word entered is correct was already entered before by the player.
 */
 int choice, attempts = 6, lengthOfWord = 0, correctGuesses = 0, indexing = 0, correctBefore;
 
@@ -41,43 +41,42 @@ char answer[10][1] = {"_", "_", "_", "_", "_", "_", "_", "_", "_", "_"};
 char guessWords[][10] = {"apple", "linux", "orange", "football", "honey", "hockey", "elephant", "camel"};
 
 char hint[][100] = {"A red or green juicy fruit with crispy flesh.",
-					"An open source OS built on UNIX.",
-					"The common name of a color and the fruit.",
-					"A round object that is used in playing in fields.",
-					"A sweet, sticky yellowish-brown fluid.",
-					"A game played with a hooked stick and a ball.",
-					"A huge land animal with a trunk",
-					"A desert animal"};
+                    "An open source OS built on UNIX.",
+                    "The common name of a color and the fruit.",
+                    "A round object that is used in playing in fields.",
+                    "A sweet, sticky yellowish-brown fluid.",
+                    "A game played with a hooked stick and a ball.",
+                    "A huge land animal with a trunk",
+                    "A desert animal"
+                   };
 
 char guessedAlpha;
 
-int main()
-{
+int main() {
 	system("cls");
 	welcome();
 
 	choice = playerChoice();
-	switch (choice)
-	{
-	case 1:
-		startGame();
-		break;
-	case 2:
-		system("cls");
-		gameManual();
-		break;
-	case 3:
-		system("cls");
-		showCredits();
-		break;
-	case 4:
-		system("cls");
-		printf("\n\n\n\n\n\n\n\t\t\t\t****Thank you for participating****\n\n\n\n\n");
-		exit(0);
-		break;
-	default:
-		printf("\n\n\nt\t\t\t\tThe input was invalid!!!!");
-		backToMenu();
+	switch (choice) {
+		case 1:
+			startGame();
+			break;
+		case 2:
+			system("cls");
+			gameManual();
+			break;
+		case 3:
+			system("cls");
+			showCredits();
+			break;
+		case 4:
+			system("cls");
+			printf("\n\n\n\n\n\n\n\t\t\t\t****Thank you for participating****\n\n\n\n\n");
+			exit(0);
+			break;
+		default:
+			printf("\n\n\nt\t\t\t\tThe input was invalid!!!!");
+			backToMenu();
 	}
 
 	return 0;
@@ -86,24 +85,21 @@ int main()
 /**Methods will be written here*/
 
 //Displays Welcome Message
-void welcome()
-{
+void welcome() {
 	printf("\t\t\t\t*************************************************\n");
 	printf("\t\t\t\t*\t\tWelcome to Hangman\t\t*\t\t\t");
 	printf("\n\t\t\t\t*************************************************\n");
 }
 
 //When it is called, it pauses the screen until any key is pressed by the player. It redirects player to main menu.
-void backToMenu()
-{
+void backToMenu() {
 	printf("\n\n\t\t\t\tPress any key to continue");
 	getch();
 	main();
 }
 
 //Lets player choose from menu
-int playerChoice()
-{
+int playerChoice() {
 	printf("\n\n\t\t\t\t1. Start Game");
 	printf("\t\t\t2. Show game manual");
 	printf("\n\n\t\t\t\t3. Credits");
@@ -116,8 +112,7 @@ int playerChoice()
 }
 
 //Displays game manual to the player
-void gameManual()
-{
+void gameManual() {
 	welcome();
 	printf("\n\n\n\t\t\t\t\t\tGAME MANUAL:");
 	printf("\n\n\t\t\t1. You'll have 6 attempts to guess the answer correct.");
@@ -132,8 +127,7 @@ void gameManual()
 }
 
 //Shows credits
-void showCredits()
-{
+void showCredits() {
 	welcome();
 	printf("\n\n\t\t\t\t\tDeveloped By: Aashish Katwal");
 	printf("\n\n\t\t\t\t\tLanguage Used: C\n\n");
@@ -141,8 +135,7 @@ void showCredits()
 }
 
 //The main game logic is conducted from this function.
-void startGame()
-{
+void startGame() {
 
 	srand(time(NULL)); //prevents from generating same seed. Without this, same randNumbers will be generated each time.
 
@@ -150,8 +143,7 @@ void startGame()
 	lengthOfWord = strlen(guessWords[randNumIndex]); //length of the word to be guessed. To be used in for loop later in game logic
 
 	//game loop
-	while (correctGuesses <= lengthOfWord)
-	{
+	while (correctGuesses <= lengthOfWord) {
 		system("cls");
 		welcome();
 
@@ -160,72 +152,57 @@ void startGame()
 		printf("\n\n\n\t\t\t\tGuessed Letters: %d", correctGuesses);   //Shows how many letters have been guessed correct.
 		printf("\t\tGuesses Left: %d", lengthOfWord - correctGuesses); //Shows how many letters are to be guessed now.
 		printf("\n\n\n\t\t\t\t\t\t");
-		for (indexing = 0; indexing < lengthOfWord; indexing++)
-		{
-			if (letterGuessed[indexing] == 1)
-			{
+		for (indexing = 0; indexing < lengthOfWord; indexing++) {
+			if (letterGuessed[indexing] == 1) {
 				printf("%c ", guessWords[randNumIndex][indexing]);
-			}
-			else
-			{
+			} else {
 				printf("_ ");
 			}
 		}
 
-		if (correctGuesses < lengthOfWord)
-		{
+		if (correctGuesses < lengthOfWord) {
 			printf("\n\n\n\t\t\t\tEnter your guess: "); //Takes the guess alphabet from player as input.
 			scanf("%*c %c", &guessedAlpha);
 
 			/*Main logic behind game*/
 
-			if (isalpha(guessedAlpha))
-			{ //Checks if the input given by player is alphabet or not.
+			if (isalpha(guessedAlpha)) {
+				//Checks if the input given by player is alphabet or not.
 				correctBefore = correctGuesses;
-				for (indexing = 0; indexing < lengthOfWord; indexing++)
-				{
+				for (indexing = 0; indexing < lengthOfWord; indexing++) {
 
-					if (letterGuessed[indexing] == 1)
-					{ //prevents player from entering same correct guess and winning the game.
+					if (letterGuessed[indexing] == 1) {
+						//prevents player from entering same correct guess and winning the game.
 						continue;
 					}
 
 					/* Checks if the letter entered by the player is a correct guess in the randomly selected word */
-					if (guessedAlpha == guessWords[randNumIndex][indexing])
-					{
+					if (guessedAlpha == guessWords[randNumIndex][indexing]) {
 						//changes the respective index to 1 so that we can differentiate between which letters are already guessed.
 						letterGuessed[indexing] = 1;
 						correctGuesses++;
 					}
 				}
-			}
-			else
-			{
+			} else {
 				attempts--;
 			}
-		}
-		else
-		{
+		} else {
 			break;
 		}
 
 		/* Below code checks if any correct word was entered. If YES, the correctGuess would be greater than zero. */
-		if (correctBefore == correctGuesses)
-		{
+		if (correctBefore == correctGuesses) {
 			attempts--;
-			if (attempts == 0)
-			{
-				break;
-			}
+
+		}
+		if (attempts == 0) {
+			break;
 		}
 	}
 
-	if (attempts == 0)
-	{
+	if (attempts == 0) {
 		printf("\n\n\t\t\t\t*** Sorry You Lost. The correct word was: %s ***\n\n\n\n", guessWords[randNumIndex]);
-	}
-	else if (correctGuesses == lengthOfWord)
-	{
+	} else if (correctGuesses == lengthOfWord) {
 		printf("\n\n\t\t\t\t\t***  Hurray!! You Won.  ***");
 	}
 }
